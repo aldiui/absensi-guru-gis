@@ -23,6 +23,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url();?>assets/css/style.css" />
     <link rel="stylesheet" href="<?= base_url();?>assets/css/components.css" />
+    <script src="<?= base_url();?>assets/modules/chart.min.js"></script>
     <script src="<?= base_url();?>assets/modules/sweetalert/sweetalert.min.js"></script>
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>

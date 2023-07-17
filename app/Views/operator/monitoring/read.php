@@ -20,7 +20,7 @@
                                     <label for="bulan" class="form-label">Tanggal</label>
                                     <input type="date"
                                         class="form-control <?= !empty($rusak['tanggal']) ? 'is-invalid' : ''; ?>"
-                                        name="tanggal" id="tanggal" value="<?= old('tanggal');?>">
+                                        name="tanggal" id="tanggal" value="<?= old('tanggal', $tanggal);?>">
                                     <small class="invalid-feedback">
                                         <?= !empty($rusak['tanggal']) ? validation_show_error('tanggal') : ''; ?>
                                     </small>

@@ -17,6 +17,7 @@
                 </div>
                 <div class="card-body">
                     <form action="<?= base_url('resetpassword');?>" method="post" autocomplete="off">
+                        <?= csrf_field();?>
                         <div class=" form-group">
                             <label for="email">Email</label>
                             <input id="email" type="email"

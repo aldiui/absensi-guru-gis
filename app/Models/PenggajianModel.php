@@ -39,4 +39,15 @@ class PenggajianModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getSum($bulan, $tahun)
+    {
+        $total = $this->selectSum('total')
+            ->where('bulan', $bulan)
+            ->where('tahun', $tahun)
+            ->get()
+            ->getRow()
+            ->total;
+        return $total ? $total : 0;
+    }
 }

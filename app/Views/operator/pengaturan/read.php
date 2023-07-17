@@ -40,7 +40,8 @@
                                             <label for="name" class="form-label">Nama Kantor</label>
                                             <input type="text"
                                                 class="form-control <?= !empty($rusak['name']) ? 'is-invalid' : ''; ?>"
-                                                name="name" id="name" value="<?= $setting['name_kantor'];?>">
+                                                name="name" id="name"
+                                                value="<?= old('name',$setting['name_kantor']);?>">
                                             <small class="invalid-feedback">
                                                 <?= !empty($rusak['name']) ? validation_show_error('name') : ''; ?>
                                             </small>
@@ -51,7 +52,8 @@
                                             <label for="aplikasi" class="form-label">Nama Aplikasi</label>
                                             <input type="text"
                                                 class="form-control <?= !empty($rusak['aplikasi']) ? 'is-invalid' : ''; ?>"
-                                                name="aplikasi" id="aplikasi" value="<?= $setting['name_aplikasi'];?>">
+                                                name="aplikasi" id="aplikasi"
+                                                value="<?= old('aplikasi', $setting['name_aplikasi']);?>">
                                             <small class="invalid-feedback">
                                                 <?= !empty($rusak['aplikasi']) ? validation_show_error('aplikasi') : ''; ?>
                                             </small>
@@ -65,7 +67,7 @@
                                             <label for="lat" class="form-label">Latitude</label>
                                             <input type="text"
                                                 class="form-control <?= !empty($rusak['lat']) ? 'is-invalid' : ''; ?>"
-                                                name="lat" id="lat" value="<?= $setting['lat'];?>">
+                                                name="lat" id="lat" value="<?= old('lat',$setting['lat']);?>">
                                             <small class="invalid-feedback">
                                                 <?= !empty($rusak['lat']) ? validation_show_error('lat') : ''; ?>
                                             </small>
@@ -76,7 +78,7 @@
                                             <label for="long" class="form-label">Longtitude</label>
                                             <input type="text"
                                                 class="form-control <?= !empty($rusak['long']) ? 'is-invalid' : ''; ?>"
-                                                name="long" id="long" value="<?= $setting['long'];?>">
+                                                name="long" id="long" value="<?= old('long',$setting['long']);?>">
                                             <small class="invalid-feedback">
                                                 <?= !empty($rusak['long']) ? validation_show_error('long') : ''; ?>
                                             </small>
@@ -87,7 +89,8 @@
                                             <label for="radius" class="form-label">Radius (Meter)</label>
                                             <input type="number"
                                                 class="form-control <?= !empty($rusak['radius']) ? 'is-invalid' : ''; ?>"
-                                                name="radius" id="radius" value="<?= $setting['radius'];?>">
+                                                name="radius" id="radius"
+                                                value="<?= old('radius',$setting['radius']);?>">
                                             <small class="invalid-feedback">
                                                 <?= !empty($rusak['radius']) ? validation_show_error('radius') : ''; ?>
                                             </small>
@@ -97,7 +100,7 @@
                                         <div class="form-group">
                                             <label for="name" class="form-label">Alamat</label>
                                             <textarea name="alamat" id="alamat"
-                                                class="form-control <?= !empty($rusak['alamat']) ? 'is-invalid' : ''; ?>"><?= $setting['address'];?></textarea>
+                                                class="form-control <?= !empty($rusak['alamat']) ? 'is-invalid' : ''; ?>"><?= old('alamat',$setting['address']);?></textarea>
                                             <small class="invalid-feedback">
                                                 <?= !empty($rusak['alamat']) ? validation_show_error('alamat') : ''; ?>
                                             </small>
@@ -113,7 +116,8 @@
                                                 (Menit)</label>
                                             <input type="number"
                                                 class="form-control <?= !empty($rusak['sebelum_masuk']) ? 'is-invalid' : ''; ?>"
-                                                name="sebelum_masuk" id="" value="<?= $setting['sebelum_masuk'];?>">
+                                                name="sebelum_masuk" id="sebelum_masuk"
+                                                value="<?= old('sebelum_masuk',$setting['sebelum_masuk']);?>">
                                             <small class="invalid-feedback">
                                                 <?= !empty($rusak['sebelum_masuk']) ? validation_show_error('') : ''; ?>
                                             </small>
@@ -127,7 +131,7 @@
                                             <input type="number"
                                                 class="form-control <?= !empty($rusak['sebelum_pulang']) ? 'is-invalid' : ''; ?>"
                                                 name="sebelum_pulang" id="sebelum_pulang"
-                                                value="<?= $setting['sebelum_pulang'];?>">
+                                                value="<?= old('sebelum_masuk',$setting['sebelum_pulang']);?>">
                                             <small class="invalid-feedback">
                                                 <?= !empty($rusak['sebelum_pulang']) ? validation_show_error('sebelum_pulang') : ''; ?>
                                             </small>
@@ -141,9 +145,23 @@
                                             <input type="number"
                                                 class="form-control <?= !empty($rusak['setelah_pulang']) ? 'is-invalid' : ''; ?>"
                                                 name="setelah_pulang" id="setelah_pulang"
-                                                value="<?= $setting['setelah_pulang'];?>">
+                                                value="<?= old('setelah_pulang',$setting['setelah_pulang']);?>">
                                             <small class="invalid-feedback">
                                                 <?= !empty($rusak['setelah_pulang']) ? validation_show_error('setelah_pulang') : ''; ?>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3 font-weight-bold">
+                                        <div>Pengaturan Gaji / Jam Pelajaran</div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="gaji" class="form-label">Gaji / Jam Pelajaran</label>
+                                            <input type="text"
+                                                class="form-control <?= !empty($rusak['gaji']) ? 'is-invalid' : ''; ?>"
+                                                name="gaji" id="gaji" value="<?= old('gaji',$setting['gaji']);?>">
+                                            <small class="invalid-feedback">
+                                                <?= !empty($rusak['gaji']) ? validation_show_error('gaji') : ''; ?>
                                             </small>
                                         </div>
                                     </div>
@@ -171,7 +189,8 @@
                                                 Tangan</label>
                                             <input type="text"
                                                 class="form-control <?= !empty($rusak['name_ttd']) ? 'is-invalid' : ''; ?>"
-                                                name="name_ttd" id="name_ttd" value="<?= $setting['name_ttd'];?>">
+                                                name="name_ttd" id="name_ttd"
+                                                value="<?= old('name_ttd',$setting['name_ttd']);?>">
                                             <small class="invalid-feedback">
                                                 <?= !empty($rusak['name_ttd']) ? validation_show_error('name_ttd') : ''; ?>
                                             </small>
@@ -184,7 +203,7 @@
                                             <input type="text"
                                                 class="form-control <?= !empty($rusak['jabatan_ttd']) ? 'is-invalid' : ''; ?>"
                                                 name="jabatan_ttd" id="jabatan_ttd"
-                                                value="<?= $setting['jabatan_ttd'];?>">
+                                                value="<?= old('jabatan_ttd',$setting['jabatan_ttd']);?>">
                                             <small class="invalid-feedback">
                                                 <?= !empty($rusak['jabatan_ttd']) ? validation_show_error('jabatan_ttd') : ''; ?>
                                             </small>
@@ -196,7 +215,7 @@
                                                 Base64</label>
                                             <input type="text"
                                                 class="form-control <?= !empty($rusak['path']) ? 'is-invalid' : ''; ?>"
-                                                name="path" id="path" value="<?= $setting['path'];?>">
+                                                name="path" id="path" value="<?= old('path',$setting['path']);?>">
                                             <small class="invalid-feedback">
                                                 <?= !empty($rusak['path']) ? validation_show_error('path') : ''; ?>
                                             </small>

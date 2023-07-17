@@ -27,7 +27,7 @@
                                                     class="form-control <?= !empty($rusak['bulan']) ? 'is-invalid' : ''; ?>">
                                                     <option value="">-- Pilih Bulan --</option>
                                                     <?php foreach($bulan as $row):?>
-                                                    <?php if($row['no'] ==  old('bulan')):?>
+                                                    <?php if($row['no'] ==  old('bulan', $bulan1)):?>
                                                     <option value="<?= $row['no'];?>" selected>
                                                         <?= $row['nama'];?>
                                                     </option>
@@ -50,7 +50,7 @@
                                                     class="form-control <?= !empty($rusak['tahun']) ? 'is-invalid' : ''; ?>">
                                                     <option value="">-- Pilih Tahun --</option>
                                                     <?php foreach($tahun as $row):?>
-                                                    <?php if($row ==  old('tahun')):?>
+                                                    <?php if($row ==  old('tahun', $tahun1)):?>
                                                     <option value="<?= $row;?>" selected>
                                                         <?= $row;?>
                                                     </option>
@@ -105,15 +105,15 @@
                                                 <?= $row["status"];?>
                                             </td>
                                             <td>
-                                                <?php if($row["persetujuan"] == "Disetujui"):?>
+                                                <?php if($row["persetujuan"] == 1):?>
                                                 <span class="badge badge-success">
                                                     Disetujui
                                                 </span>
-                                                <?php elseif($row["persetujuan"] == "Ditolak"):?>
+                                                <?php elseif($row["persetujuan"] == 2):?>
                                                 <span class="badge badge-danger">
                                                     Ditolak
                                                 </span>
-                                                <?php elseif($row["persetujuan"] == "Pending"):?>
+                                                <?php elseif($row["persetujuan"] == 0):?>
                                                 <span class="badge badge-warning">
                                                     Pending
                                                 </span>
@@ -168,15 +168,15 @@
                                                 <?= $row["status"];?>
                                             </td>
                                             <td>
-                                                <?php if($row["persetujuan"] == "Disetujui"):?>
+                                                <?php if($row["persetujuan"] == 1):?>
                                                 <span class="badge badge-success">
                                                     Disetujui
                                                 </span>
-                                                <?php elseif($row["persetujuan"] == "Ditolak"):?>
+                                                <?php elseif($row["persetujuan"] == 2):?>
                                                 <span class="badge badge-danger">
                                                     Ditolak
                                                 </span>
-                                                <?php elseif($row["persetujuan"] == "Pending"):?>
+                                                <?php elseif($row["persetujuan"] == 0):?>
                                                 <span class="badge badge-warning">
                                                     Pending
                                                 </span>

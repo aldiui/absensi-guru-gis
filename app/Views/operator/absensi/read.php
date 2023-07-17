@@ -22,7 +22,7 @@
                                         class="form-control <?= !empty($rusak['bulan']) ? 'is-invalid' : ''; ?>">
                                         <option value="">-- Pilih Bulan --</option>
                                         <?php foreach($bulan as $row):?>
-                                        <?php if($row['no'] ==  old('bulan')):?>
+                                        <?php if($row['no'] ==  old('bulan', !empty($bulan1) ?? $bulan1)):?>
                                         <option value="<?= $row['no'];?>" selected>
                                             <?= $row['nama'];?>
                                         </option>
@@ -45,7 +45,7 @@
                                         class="form-control <?= !empty($rusak['tahun']) ? 'is-invalid' : ''; ?>">
                                         <option value="">-- Pilih Tahun --</option>
                                         <?php foreach($tahun as $row):?>
-                                        <?php if($row ==  old('tahun')):?>
+                                        <?php if($row ==  old('tahun', !empty($tahun1) ?? $tahun1)):?>
                                         <option value="<?= $row;?>" selected>
                                             <?= $row;?>
                                         </option>
@@ -68,7 +68,7 @@
                                         class="form-control <?= !empty($rusak['guru']) ? 'is-invalid' : ''; ?>">
                                         <option value="">-- Pilih Guru --</option>
                                         <?php foreach($guru as $row):?>
-                                        <?php if($row['id'] ==  old('guru')):?>
+                                        <?php if($row['id'] ==  old('guru', !empty($user_guru) ?? $user_guru['id'])):?>
                                         <option value="<?= $row['id'];?>" selected>
                                             <?= $row['name'];?>
                                         </option>
@@ -104,9 +104,10 @@
                             href="<?= base_url('operator/absensi/cetak/').$bulan1.'/'.$tahun1.'/'.$user_guru['id'];?>">
                             <i class="fas fa-file-pdf mr-2"></i>PDF
                         </a>
-                        <!-- <a class="btn btn-success text-white">
+                        <a class="btn btn-success text-white"
+                            href="<?= base_url('operator/absensi/excel/').$bulan1.'/'.$tahun1.'/'.$user_guru['id'];?>">
                             <i class="fas fa-file-excel mr-2"></i>Excel
-                        </a> -->
+                        </a>
                     </div>
                 </div>
                 <div class="card-body">

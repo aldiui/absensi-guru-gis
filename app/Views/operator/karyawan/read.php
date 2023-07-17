@@ -40,7 +40,7 @@
                                     <td><?= $row['name_jabatan'];?> (<?= $row['akronim'];?>)</td>
                                     <td><?= $row['role'];?></td>
                                     <td>
-                                        <?php if($row['is_active'] == "Aktif"):?>
+                                        <?php if($row['is_active'] == 1):?>
                                         <div class="badge bg-success text-white">Aktif</div>
                                         <?php else:?>
                                         <div class="badge bg-danger text-white">Tidak Aktif</div>

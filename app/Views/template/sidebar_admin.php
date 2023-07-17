@@ -57,9 +57,17 @@
                 <a href="<?= base_url('operator/jadwal');?>" class="nav-link"><i
                         class="fas fa-calendar"></i><span>Jadwal</span></a>
             </li>
+            <li class="<?= (uri(2) == 'libur') ? 'active' : '';?>">
+                <a href="<?= base_url('operator/libur');?>" class="nav-link"><i
+                        class="fas fa-calendar-check"></i><span>Libur</span></a>
+            </li>
             <li class="<?= (uri(2) == 'pengaturan') ? 'active' : '';?>">
                 <a href="<?= base_url('operator/pengaturan');?>" class="nav-link"><i
                         class="fas fa-cogs"></i><span>Pengaturan</span></a>
+            </li>
+            <li class="<?= (uri(2) == 'email') ? 'active' : '';?>">
+                <a href="<?= base_url('operator/email');?>" class="nav-link"><i
+                        class="fas fa-envelope"></i><span>Email</span></a>
             </li>
             <li class="menu-header">Data Profil</li>
             <li class="<?= (uri(2) == 'profil') ? 'active' : '';?>">

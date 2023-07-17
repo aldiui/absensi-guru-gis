@@ -13,13 +13,14 @@
                 </div>
                 <div class="card-body">
                     <form action="" method="post" autocomplete="off">
+                        <?= csrf_field();?>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="name" class="form-label">Nama</label>
                                     <input type="text"
                                         class="form-control <?= !empty($rusak['name']) ? 'is-invalid' : ''; ?>"
-                                        name="name" id="name" value="<?= $karyawan['name'];?>">
+                                        name="name" id="name" value="<?= old('name', $karyawan['name']);?>">
                                     <small class="invalid-feedback">
                                         <?= !empty($rusak['name']) ? validation_show_error('name') : ''; ?>
                                     </small>
@@ -30,7 +31,7 @@
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email"
                                         class="form-control <?= !empty($rusak['email']) ? 'is-invalid' : ''; ?>"
-                                        name="email" id="email" value="<?= $karyawan['email'];?>">
+                                        name="email" id="email" value="<?= old('email', $karyawan['email']);?>">
                                     <small class="invalid-feedback">
                                         <?= !empty($rusak['email']) ? validation_show_error('email') : ''; ?>
                                     </small>
@@ -41,7 +42,7 @@
                                     <label for="phone" class="form-label">No Handphone</label>
                                     <input type="text"
                                         class="form-control <?= !empty($rusak['phone']) ? 'is-invalid' : ''; ?>"
-                                        name="phone" id="phone" value="<?= $karyawan['phone'];?>">
+                                        name="phone" id="phone" value="<?= old('phone', $karyawan['phone']);?>">
                                     <small class="invalid-feedback">
                                         <?= !empty($rusak['phone']) ? validation_show_error('phone') : ''; ?>
                                     </small>
@@ -54,7 +55,7 @@
                                         class="form-control <?= !empty($rusak['jabatan']) ? 'is-invalid' : ''; ?>">
                                         <option value="">-- Pilih Jabatan --</option>
                                         <?php foreach($jabatan as $row):?>
-                                        <?php if($row['id'] ==  $karyawan['jabatan_id']):?>
+                                        <?php if($row['id'] ==  old('jabatan', $karyawan['jabatan_id'])):?>
                                         <option value="<?= $row['id'];?>" selected><?= $row['akronim'];?> -
                                             <?= $row['name_jabatan'];?>
                                         </option>
@@ -77,7 +78,7 @@
                                         class="form-control <?= !empty($rusak['role']) ? 'is-invalid' : ''; ?>">
                                         <option value="">-- Pilih Role --</option>
                                         <?php foreach($role as $row):?>
-                                        <?php if($row ==   $karyawan['role']):?>
+                                        <?php if($row ==  old('role',$karyawan['role'])):?>
                                         <option value="<?= $row;?>" selected><?= $row;?>
                                         </option>
                                         <?php else:?>
@@ -94,19 +95,20 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="status" class="form-label">Status</label>
-                                    <select name="status" id="status"
-                                        class="form-control <?= !empty($rusak['status']) ? 'is-invalid' : ''; ?>">
-                                        <option value="">-- Pilih Status --</option>
-                                        <?php foreach($status as $row):?>
-                                        <?php if($row == $karyawan['is_active']):?>
-                                        <option value="<?= $row;?>" selected><?= $row;?>
-                                        </option>
-                                        <?php else:?>
-                                        <option value="<?= $row;?>"><?= $row;?>
-                                        </option>
-                                        <?php endif;?>
-                                        <?php endforeach;?>
-                                    </select>
+                                    <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
+                                        <label
+                                            class="btn btn-lg btn-outline-success w-50 <?= (old('status', $karyawan['is_active']) == 1) ? "active" : ""; ?>">
+                                            <input type="radio" name="status" value="1"
+                                                <?= (old('status', $karyawan['is_active']) == 1) ? "checked active" : ""; ?>>
+                                            Aktif
+                                        </label>
+                                        <label
+                                            class="btn btn-lg btn-outline-danger w-50 <?= (old('status', $karyawan['is_active']) == 0) ? "active" : ""; ?>">
+                                            <input type="radio" name="status" value="0"
+                                                <?= (old('status', $karyawan['is_active']) == 0) ? "active" : ""; ?>>
+                                            Tidak Aktif
+                                        </label>
+                                    </div>
                                     <small class="invalid-feedback">
                                         <?= !empty($rusak['status']) ? validation_show_error('status') : ''; ?>
                                     </small>
@@ -116,7 +118,7 @@
                                 <div class="form-group">
                                     <label for="name" class="form-label">Alamat</label>
                                     <textarea name="alamat" id="alamat"
-                                        class="form-control <?= !empty($rusak['alamat']) ? 'is-invalid' : ''; ?>"><?= $karyawan['address'];?></textarea>
+                                        class="form-control <?= !empty($rusak['alamat']) ? 'is-invalid' : ''; ?>"><?= old('alamat',$karyawan['alamat']);?></textarea>
                                     <small class="invalid-feedback">
                                         <?= !empty($rusak['alamat']) ? validation_show_error('alamat') : ''; ?>
                                     </small>
@@ -125,6 +127,7 @@
                         </div>
                         <div>
                             <button class="btn btn-primary">Update</button>
+                            <a href="<?= base_url('operator/karyawan');?>" class="btn btn-info">Kembali</a>
                         </div>
                     </form>
                 </div>

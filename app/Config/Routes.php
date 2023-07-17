@@ -57,6 +57,9 @@ $routes->group('operator', ['filter' => 'role:Operator'], function ($routes) {
     $routes->get('pengaturan', 'Operator\Pengaturan::index');
     $routes->post('pengaturan', 'Operator\Pengaturan::update');
     
+    $routes->get('email', 'Operator\Email::index');
+    $routes->post('email', 'Operator\Email::update');
+    
     $routes->get('profil', 'Operator\Profil::index');
     $routes->post('profil', 'Operator\Profil::update');
     $routes->post('profil/changepassword', 'Operator\Profil::changepassword');
@@ -66,13 +69,18 @@ $routes->group('operator', ['filter' => 'role:Operator'], function ($routes) {
     $routes->post('jadwal/save', 'Operator\Jadwal::save');
     $routes->post('jadwal/update', 'Operator\Jadwal::update');
     
+    $routes->get('libur', 'Operator\Jadwal::libur');
+    $routes->post('libur', 'Operator\Jadwal::updatelibur');
+    
     $routes->get('absensi', 'Operator\Absensi::index');
     $routes->get('absensi/pdf/(:num)/(:num)/(:num)', 'Operator\Absensi::pdf/$1/$2/$3');
+    $routes->get('absensi/excel/(:num)/(:num)/(:num)', 'Operator\Absensi::excel/$1/$2/$3');
     $routes->get('absensi/cetak/(:num)/(:num)/(:num)', 'Operator\Absensi::cetak/$1/$2/$3');
     $routes->post('absensi/cari', 'Operator\Absensi::cari');
     
     $routes->get('rekap', 'Operator\Absensi::rekap');
     $routes->get('rekap/pdf/(:num)/(:num)', 'Operator\Absensi::rekappdf/$1/$2');
+    $routes->get('rekap/excel/(:num)/(:num)', 'Operator\Absensi::rekapexcel/$1/$2');
     $routes->get('rekap/cetak/(:num)/(:num)', 'Operator\Absensi::cetakrekap/$1/$2');
     $routes->post('rekap/cari', 'Operator\Absensi::carirekap');
     
@@ -82,8 +90,16 @@ $routes->group('operator', ['filter' => 'role:Operator'], function ($routes) {
     $routes->get('izin', 'Operator\Absensi::izin');
     $routes->post('izin/cari', 'Operator\Absensi::cariizin');
     $routes->post('izin/update/(:num)', 'Operator\Absensi::updateizin/$1');
-
+    
     $routes->get('penggajian', 'Operator\Penggajian::index');
+    $routes->post('penggajian', 'Operator\Penggajian::save');
+    $routes->get('penggajian/delete/(:num)', 'Operator\Penggajian::delete/$1');
+    $routes->post('penggajian/update/(:num)', 'Operator\Penggajian::update/$1');
+    $routes->get('penggajian/pdf/(:num)/(:num)', 'Operator\Penggajian::pdf/$1/$2');
+    $routes->get('penggajian/slip/(:num)/(:num)', 'Operator\Penggajian::slip/$1/$2');
+    $routes->get('penggajian/excel/(:num)/(:num)', 'Operator\Penggajian::excel/$1/$2');
+    $routes->get('penggajian/cetak/(:num)/(:num)', 'Operator\Penggajian::cetak/$1/$2');
+    $routes->post('penggajian/cari', 'Operator\Penggajian::cari');
 });
 
 $routes->group('/', ['filter' => 'role:Guru'], function ($routes) {

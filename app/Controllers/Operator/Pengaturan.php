@@ -89,6 +89,12 @@ class Pengaturan extends BaseController
                     'required' => 'Lokasi Penyimpanan Gambar Base64 harus di isi!',
                 ],
             ],
+            'gaji' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Gaji / Jam Pelajaran Tangan harus di isi!',
+                ],
+            ],
         ]);
         if (!$validate) {
             return redirect()->to(base_url('/operator/pengaturan'))->withInput();
@@ -107,6 +113,7 @@ class Pengaturan extends BaseController
             'name_ttd' =>  $this->request->getPost('name_ttd'),
             'jabatan_ttd' =>  $this->request->getPost('jabatan_ttd'),
             'path' =>  $this->request->getPost('path'),
+            'gaji' =>  $this->request->getPost('gaji'),
         ];
 
         $setting = $this->PengaturanModel->find(1);
@@ -131,7 +138,7 @@ class Pengaturan extends BaseController
             }
         }
         $this->PengaturanModel->update(1, $data);
-        session()->setFlashdata('pesan', 'Data Pengaturan Lokasi berhasil di ubah');
+        session()->setFlashdata('pesan', 'Data Pengaturan berhasil di ubah');
         return redirect()->to(base_url('/operator/pengaturan'));
     }
 }

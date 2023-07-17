@@ -20,7 +20,7 @@
                                                 <label for="date" class="form-label">Tanggal</label>
                                                 <input type="date"
                                                     class="form-control <?= !empty($rusak['date']) ? 'is-invalid' : ''; ?>"
-                                                    name="date" id="date" value="<?= $izin['date'];?>">
+                                                    name="date" id="date" value="<?= old('date', $izin['date']);?>">
                                                 <small class="invalid-feedback">
                                                     <?= !empty($rusak['date']) ? validation_show_error('date') : ''; ?>
                                                 </small>
@@ -33,7 +33,7 @@
                                                     class="form-control <?= !empty($rusak['status']) ? 'is-invalid' : ''; ?>">
                                                     <option value="">-- Pilih status --</option>
                                                     <?php foreach($status as $row):?>
-                                                    <?php if($row ==  $izin['status']):?>
+                                                    <?php if($row ==  old('status', $izin['status'])):?>
                                                     <option value="<?= $row;?>" selected>
                                                         <?= $row;?>
                                                     </option>
@@ -53,7 +53,7 @@
                                             <div class="form-group">
                                                 <label for="keterangan" class="form-label">Keterangan</label>
                                                 <textarea name="keterangan" id="keterangan"
-                                                    class="form-control <?= !empty($rusak['keterangan']) ? 'is-invalid' : ''; ?>"><?= $izin['keterangan'];?></textarea>
+                                                    class="form-control <?= !empty($rusak['keterangan']) ? 'is-invalid' : ''; ?>"><?= old('keterangan', $izin['keterangan']);?></textarea>
                                                 <small class="invalid-feedback">
                                                     <?= !empty($rusak['keterangan']) ? validation_show_error('keterangan') : ''; ?>
                                                 </small>
@@ -77,6 +77,7 @@
                                     </div>
                                     <div>
                                         <button class="btn btn-primary">Update</button>
+                                        <a href="<?= base_url('izin');?>" class="btn btn-info">Kembali</a>
                                     </div>
                                 </form>
                             </div>

@@ -54,7 +54,7 @@ class KaryawanModel extends Model
         return $this->select('users.*, jabatan.name_jabatan, jabatan.akronim')
             ->join('jabatan', 'jabatan.id = users.jabatan_id')
             ->where('role', 'Guru')
-            ->where('users.is_active', 'Aktif')
+            ->where('users.is_active', 1)
             ->get()
             ->getResultArray();
     }
@@ -103,7 +103,7 @@ class KaryawanModel extends Model
             ->where('role', 'Guru')
             ->where('presents.date', $tanggal)
             ->where('jadwal.hari', $hari)
-            ->where('jadwal.status', 'Aktif')
+            ->where('jadwal.status', 1)
             ->get()
             ->getResultArray();
     }
@@ -113,7 +113,7 @@ class KaryawanModel extends Model
     {
         $days = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
         $keterlambatan = [];
-    
+
         for ($day = 1; $day <= $days; $day++) {
             $date = "$tahun-$bulan-$day";
             $dayOfWeek = date('D', strtotime($date));
@@ -132,7 +132,7 @@ class KaryawanModel extends Model
         $totalKeterlambatan = array_sum($keterlambatan);
         return $totalKeterlambatan;
     }
-    
+
 
     public function getUserJadwal($id)
     {
@@ -141,7 +141,7 @@ class KaryawanModel extends Model
             ->join('jadwal', 'jadwal.user_id = users.id')
             ->where('jadwal.hari', $hari)
             ->where('users.id', $id)
-            ->where('jadwal.status', 'Aktif')
+            ->where('jadwal.status', 1)
             ->get()
             ->getRowArray();
     }
@@ -159,6 +159,17 @@ class KaryawanModel extends Model
         ->join('jabatan', 'jabatan.id = users.jabatan_id')
         ->where('MONTH(unables.date)', $bulan)
         ->where('YEAR(unables.date)', $tahun)
+        ->get()
+        ->getResultArray();
+    }
+    
+    public function getPenggajian($bulan, $tahun)
+    {
+        return $this->select('penggajian.*, users.name, jabatan.name_jabatan, jabatan.akronim')
+        ->join('penggajian', 'penggajian.user_id = users.id')
+        ->join('jabatan', 'jabatan.id = users.jabatan_id')
+        ->where('penggajian.bulan', $bulan)
+        ->where('penggajian.tahun', $tahun)
         ->get()
         ->getResultArray();
     }

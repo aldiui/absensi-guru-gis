@@ -59,9 +59,11 @@ abstract class BaseController extends Controller
         $this->JabatanModel = new \App\Models\JabatanModel();
         $this->KaryawanModel = new \App\Models\KaryawanModel();
         $this->PengaturanModel = new \App\Models\PengaturanModel();
+        $this->PenggajianModel = new \App\Models\PenggajianModel();
         $this->AbsensiModel = new \App\Models\AbsensiModel();
         $this->TokenModel = new \App\Models\TokenModel();
         $this->UnableModel = new \App\Models\UnableModel();
+        $this->EmailModel = new \App\Models\EmailModel();
         $this->Dompdf = new \Dompdf\Dompdf;
     }
 }

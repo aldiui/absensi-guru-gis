@@ -59,7 +59,7 @@ class UnableModel extends Model
         ->where('MONTH(date)', $bulan)
         ->where('YEAR(date)', $tahun)
         ->where('status', $status)
-        ->where('persetujuan', 'Disetujui')
+        ->where('persetujuan', 1)
         ->countAllResults();
     }  
 }

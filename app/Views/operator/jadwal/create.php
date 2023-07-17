@@ -14,6 +14,7 @@
                 <div class="card-body">
                     <?php if($create == "Submit"):?>
                     <form action="<?= base_url('operator/jadwal/save');?>" method="POST">
+                        <?= csrf_field();?>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered">
                                 <thead>
@@ -48,10 +49,9 @@
                                                 class="form-control">
                                         </td>
                                         <td>
-                                            <select name="status[]" id="status" class="form-control">
-                                                <?php foreach ($status as $s):?>
-                                                <option value="<?= $s;?>"><?= $s;?></option>
-                                                <?php endforeach;?>
+                                            <select name="status[]" class="form-control">
+                                                <option value="1">Aktif</option>
+                                                <option value="0">Tidak Aktif</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -60,9 +60,11 @@
                             </table>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="<?= base_url('operator/jadwal');?>" class="btn btn-info">Kembali</a>
                     </form>
                     <?php elseif($create == "Update"):?>
                     <form action="<?= base_url('operator/jadwal/update');?>" method="POST">
+                        <?= csrf_field();?>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered">
                                 <thead>
@@ -99,14 +101,11 @@
                                                 value="<?= $row['jam_mengajar'];?>" class="form-control">
                                         </td>
                                         <td>
-                                            <select name="status[]" id="status" class="form-control">
-                                                <?php foreach ($status as $s):?>
-                                                <?php if($s == $row['status']):?>
-                                                <option value="<?= $s;?>" selected><?= $s;?></option>
-                                                <?php else:?>
-                                                <option value="<?= $s;?>"><?= $s;?></option>
-                                                <?php endif;?>
-                                                <?php endforeach;?>
+                                            <select name="status[]" class="form-control">
+                                                <option value="1" <?= ($row['status'] == 1) ? "selected" : ""; ?>>Aktif
+                                                </option>
+                                                <option value="0" <?= ($row['status'] == 0) ? "selected" : ""; ?>>Tidak
+                                                    Aktif</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -115,6 +114,7 @@
                             </table>
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
+                        <a href="<?= base_url('operator/jadwal');?>" class="btn btn-info">Kembali</a>
                     </form>
                     <?php endif;?>
                 </div>

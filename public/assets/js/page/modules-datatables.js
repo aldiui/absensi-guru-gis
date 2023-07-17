@@ -29,10 +29,13 @@ $("[data-checkboxes]").each(function() {
 });
 
 $("#table-1").dataTable({
+  "pageLength": 50, // Set default page length to 50
+  "lengthMenu": [[50, 100, -1], [50, 100, "All"]], // Display options for 50, 100, and All records per page with label "All"
   "columnDefs": [
-    { "sortable": false, "targets": [2,3] }
+    { "sortable": false, "targets": [2, 3] } // Disable sorting on columns 2 and 3
   ]
 });
+
 $("#table-2").dataTable({
   "columnDefs": [
     { "sortable": false, "targets": [0,2,3] }

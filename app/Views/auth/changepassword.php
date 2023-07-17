@@ -17,6 +17,7 @@
                 </div>
                 <div class="card-body">
                     <form action="<?= base_url('verify/').$email;?>" method="post" autocomplete="off">
+                        <?= csrf_field();?>
                         <div class="form-group">
                             <label for="password" class="form-label">Password Baru</label>
                             <input type="password"

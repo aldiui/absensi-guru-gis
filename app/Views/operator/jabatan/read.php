@@ -24,7 +24,7 @@
                                 <tr>
                                     <th width="5%">No</th>
                                     <th>Singkatan</th>
-                                    <th>Jabatan</th>
+                                    <th>Nama Jabatan</th>
                                     <th width="15%">Aksi</th>
                                 </tr>
                             </thead>
@@ -74,8 +74,8 @@
                     </button>
                 </div>
                 <form method="post" action="" autocomplete="off">
-                    <div class=" modal-body">
-                        <?= csrf_field();?>
+                    <?= csrf_field();?>
+                    <div class="modal-body">
                         <div class="form-group">
                             <label for="singkatan" class="form-label">Singkatan</label>
                             <input type="text"
@@ -86,7 +86,7 @@
                             </small>
                         </div>
                         <div class="form-group">
-                            <label for="jabatan" class="form-label">Jabatan</label>
+                            <label for="jabatan" class="form-label">Nama Jabatan</label>
                             <input type="text"
                                 class="form-control  <?= !empty($rusak['jabatan']) ? 'is-invalid' : ''; ?>" id="jabatan"
                                 name="jabatan" autofocus value="<?= old('jabatan'); ?>">
@@ -119,17 +119,19 @@
                         <div class="form-group">
                             <label for="singkatan1" class="form-label">Singkatan</label>
                             <input type="text"
-                                class="form-control <?= !empty($rusak['singkatan1']) ?'is-invalid': ''; ?>"
-                                id="singkatan1" name="singkatan1" autofocus value="<?= $row['akronim']; ?>">
+                                class="form-control <?= !empty($rusak['singkatan1']) ? 'is-invalid' : ''; ?>"
+                                id="singkatan1" name="singkatan1" autofocus
+                                value="<?= old("singkatan1", $row['akronim']); ?>">
                             <small class="invalid-feedback">
                                 <?= !empty($rusak['singkatan1']) ? validation_show_error('singkatan1') : ''; ?>
                             </small>
                         </div>
                         <div class="form-group">
-                            <label for="jabatan1" class="form-label">Jabatan</label>
+                            <label for="jabatan1" class="form-label">Nama Jabatan</label>
                             <input type="text"
-                                class="form-control <?= !empty($rusak['jabatan1']) ? 'is-invalid': ''; ?>" id="jabatan1"
-                                name="jabatan1" autofocus value="<?= $row['name_jabatan']; ?>">
+                                class="form-control <?= !empty($rusak['jabatan1']) ? 'is-invalid' : ''; ?>"
+                                id="jabatan1" name="jabatan1" autofocus
+                                value="<?= old("jabatan1", $row['name_jabatan']); ?>">
                             <small class="invalid-feedback">
                                 <?= !empty($rusak['jabatan1']) ? validation_show_error('jabatan1') : ''; ?>
                             </small>

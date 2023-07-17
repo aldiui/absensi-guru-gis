@@ -15,6 +15,7 @@ class Dashboard extends BaseController
         $data['gtty'] = $this->KaryawanModel->where('jabatan_id', 2)->countAllResults();
         $data['operator'] = $this->KaryawanModel->where('jabatan_id', 3)->countAllResults();
         $data['setting'] = $this->PengaturanModel->find(1);
+        $data['penggajian'] = $this->PenggajianModel;
         return view('operator/dashboard/read', $data);
     }
 }

@@ -15,6 +15,16 @@ class Jadwal extends BaseController
         return view('operator/jadwal/read', $data);
     }
 
+    public function libur()
+    {
+        $data['title'] = 'Libur';
+        $data['user'] = $this->KaryawanModel->getUserAndJabatan(session()->get('id'));
+        $data['setting'] = $this->PengaturanModel->find(1);
+        $data['hari'] = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        $data['jadwal'] = $this->JadwalModel;
+        return view('operator/libur/read', $data);
+    }
+
     public function create($id)
     {
         $data['title'] = 'Jadwal Guru';
@@ -23,12 +33,10 @@ class Jadwal extends BaseController
         $data['setting'] = $this->PengaturanModel->find(1);
         if ($cekJadwal) {
             $data["create"] = "Update";
-            $data['status'] = ['Aktif','Tidak Aktif'];
             $data['jadwal'] = $this->KaryawanModel->getUserAndJabatan($id);
             $data['hari'] = $cekJadwal;
         } else {
             $data["create"] = "Submit";
-            $data['status'] = ['Aktif','Tidak Aktif'];
             $data['hari'] = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
             $data['jadwal'] = $this->KaryawanModel->getUserAndJabatan($id);
         }
@@ -82,5 +90,29 @@ class Jadwal extends BaseController
         $this->JadwalModel->where('user_id', $user_id)->updateBatch($data, 'hari');
         session()->setFlashdata('pesan', 'Data Jadwal berhasil diupdate.');
         return redirect()->to(base_url('operator/jadwal'));
+    }
+
+    public function updatelibur()
+    {
+        $hari = $this->request->getPost('hari');
+        $status = $this->request->getPost('libur');
+
+        if (!empty($hari) && is_array($hari)) {
+            foreach ($hari as $key => $h) {
+                if (isset($status[$key]) && $status[$key] !== null) {
+                    $allHari = $this->JadwalModel->where('hari', $h)->findAll();
+                    foreach ($allHari as $row) {
+                        $this->JadwalModel->update($row['id'], ['status' => $status[$key]]);
+                    }
+                } else {
+                    $allHari = $this->JadwalModel->where('hari', $h)->findAll();
+                    foreach ($allHari as $row) {
+                        $this->JadwalModel->update($row['id'], ['status' => $row['status_backup']]);
+                    }
+                }
+            }
+            session()->setFlashdata('pesan', 'Data Libur berhasil diperbarui.');
+        }
+        return redirect()->to(base_url('operator/libur'));
     }
 }

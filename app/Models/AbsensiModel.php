@@ -59,10 +59,43 @@ class AbsensiModel extends Model
 
     public function getHadir($id, $bulan, $tahun)
     {
-        return $this->where('user_id', $id)
-        ->where('MONTH(date)',$bulan)
-        ->where('YEAR(date)', $tahun)
-        ->where('image_out !=', '')
-        ->countAllResults();
+        $count = $this->where('user_id', $id)
+            ->where('MONTH(date)', $bulan)
+            ->where('YEAR(date)', $tahun)
+            ->where('image_out !=', '')
+            ->countAllResults();
+
+        return $count ? $count : 0;
     }
+
+    public function getJam($id, $bulan, $tahun)
+    {
+        $query = $this->where('user_id', $id)
+            ->where('MONTH(date)', $bulan)
+            ->where('YEAR(date)', $tahun)
+            ->where('image_out !=', '');
+
+        $totalJam = 0;
+        $results = $query->findAll();
+
+        foreach ($results as $result) {
+            $date = date_create($result['date']);
+            $day = date_format($date, 'D');
+
+            $jadwal = $this->db->table('jadwal')
+                ->where('hari', $day)
+                ->where('user_id', $id)
+                ->get()
+                ->getRowArray();
+
+            if ($jadwal) {
+                $totalJam += $jadwal['jam_mengajar'];
+            }
+        }
+
+        return $totalJam ?? 0;
+    }
+
+
+
 }

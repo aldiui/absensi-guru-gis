@@ -68,8 +68,43 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Data Penggajian <?= date('Y');?></h4>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="myChart2"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 </div>
+<script>
+var ctx = document.getElementById("myChart2").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September",
+            "Oktober", "November", "Desember"
+        ],
+        datasets: [{
+            label: 'Data Penggajian',
+            data: [
+                <?php for ($i = 1; $i <= 12; $i++) {
+                    echo $penggajian->getSum($i, date('Y')). ",";
+                } ?>
+            ],
+            borderWidth: 2,
+            backgroundColor: '#63ed7a',
+            borderColor: '#63ed7a',
+            borderWidth: 2.5,
+            pointBackgroundColor: '#ffffff',
+            pointRadius: 4
+        }]
+    },
+});
+</script>
 <?= $this->endSection('content') ?>

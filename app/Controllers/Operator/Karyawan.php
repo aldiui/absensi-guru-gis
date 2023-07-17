@@ -101,7 +101,7 @@ class Karyawan extends BaseController
             'jabatan_id' =>  $this->request->getPost('jabatan'),
             'role' =>  $this->request->getPost('role'),
             'is_active' =>  $this->request->getPost('status'),
-            'address' =>  $this->request->getPost('alamat'),
+            'alamat' =>  $this->request->getPost('alamat'),
             'password' => $passwordHash,
             'salt' => $salt,
         ]);
@@ -194,7 +194,7 @@ class Karyawan extends BaseController
             'jabatan_id' =>  $this->request->getPost('jabatan'),
             'role' =>  $this->request->getPost('role'),
             'is_active' =>  $this->request->getPost('status'),
-            'address' =>  $this->request->getPost('alamat'),
+            'alamat' =>  $this->request->getPost('alamat'),
         ]);
         session()->setFlashdata('pesan', 'Data Karyawan berhasil di ubah');
         return redirect()->to(base_url('/operator/karyawan'));

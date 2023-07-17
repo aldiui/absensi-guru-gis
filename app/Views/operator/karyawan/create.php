@@ -95,19 +95,20 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="status" class="form-label">Status</label>
-                                    <select name="status" id="status"
-                                        class="form-control <?= !empty($rusak['status']) ? 'is-invalid' : ''; ?>">
-                                        <option value="">-- Pilih Status --</option>
-                                        <?php foreach($status as $row):?>
-                                        <?php if($row ==  old('status')):?>
-                                        <option value="<?= $row;?>" selected><?= $row;?>
-                                        </option>
-                                        <?php else:?>
-                                        <option value="<?= $row;?>"><?= $row;?>
-                                        </option>
-                                        <?php endif;?>
-                                        <?php endforeach;?>
-                                    </select>
+                                    <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
+                                        <label
+                                            class="btn btn-lg btn-outline-success w-50 <?= (old('status') == 1) ? "active" : ""; ?>">
+                                            <input type="radio" name="status" value="1"
+                                                <?= (old('status') == 1) ? "checked active" : ""; ?>>
+                                            Aktif
+                                        </label>
+                                        <label
+                                            class="btn btn-lg btn-outline-danger w-50 <?= (old('status') == 0) ? "active" : ""; ?>">
+                                            <input type="radio" name="status" value="0"
+                                                <?= (old('status') == 0) ? "active" : ""; ?>>
+                                            Tidak Aktif
+                                        </label>
+                                    </div>
                                     <small class="invalid-feedback">
                                         <?= !empty($rusak['status']) ? validation_show_error('status') : ''; ?>
                                     </small>
@@ -148,6 +149,7 @@
                         </div>
                         <div>
                             <button class="btn btn-primary">Submit</button>
+                            <a href="<?= base_url('operator/karyawan');?>" class="btn btn-info">Kembali</a>
                         </div>
                     </form>
                 </div>

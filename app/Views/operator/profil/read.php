@@ -47,7 +47,7 @@ h<?= $this->extend('template/layout_admin') ?>
                                                 <label for="name" class="form-label">Nama</label>
                                                 <input type="text"
                                                     class="form-control <?= !empty($rusak['name']) ? 'is-invalid' : ''; ?>"
-                                                    name="name" id="name" value="<?= $user['name'];?>">
+                                                    name="name" id="name" value="<?= old('name', $user['name']);?>">
                                                 <small class="invalid-feedback">
                                                     <?= !empty($user['name']) ? validation_show_error('name') : ''; ?>
                                                 </small>
@@ -65,7 +65,7 @@ h<?= $this->extend('template/layout_admin') ?>
                                                 <label for="phone" class="form-label">No Handphone</label>
                                                 <input type="text"
                                                     class="form-control <?= !empty($rusak['phone']) ? 'is-invalid' : ''; ?>"
-                                                    name="phone" id="phone" value="<?= $user['phone'];?>">
+                                                    name="phone" id="phone" value="<?= old('phone', $user['phone']);?>">
                                                 <small class="invalid-feedback">
                                                     <?= !empty($rusak['phone']) ? validation_show_error('phone') : ''; ?>
                                                 </small>
@@ -75,7 +75,7 @@ h<?= $this->extend('template/layout_admin') ?>
                                             <div class="form-group">
                                                 <label for="alamat" class="form-label">Alamat</label>
                                                 <textarea name="alamat"
-                                                    class="form-control <?= !empty($rusak['alamat']) ? 'is-invalid' : ''; ?>"><?= $user['address'];?></textarea>
+                                                    class="form-control <?= !empty($rusak['alamat']) ? 'is-invalid' : ''; ?>"><?= old('alamat', $user['alamat']);?></textarea>
                                                 <small class="invalid-feedback">
                                                     <?= !empty($rusak['alamat']) ? validation_show_error('alamat') : ''; ?>
                                                 </small>

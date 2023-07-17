@@ -99,7 +99,7 @@ class Profil extends BaseController
         $data =  [
             'name' =>  $this->request->getPost('name'),
             'phone' =>  $this->request->getPost('phone'),
-            'address' =>  $this->request->getPost('alamat'),
+            'alamat' =>  $this->request->getPost('alamat'),
         ];
 
         if ($image->isValid() && !$image->hasMoved()) {

@@ -60,8 +60,8 @@
                 <tr>
                     <td width="100px">
                         <div>
-                            <img src="<?= generateBase64Image($setting['path'].$setting['logo_kantor']);?>"
-                                width="100px" alt="">
+                            <img src="<?= generateBase64Image($setting['path'].$setting['logo_kantor']);?>" width="70px"
+                                alt="">
                         </div>
                     </td>
                     <td>

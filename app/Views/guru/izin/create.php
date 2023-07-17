@@ -76,6 +76,7 @@
                                     </div>
                                     <div>
                                         <button class="btn btn-primary">Submit</button>
+                                        <a href="<?= base_url('izin');?>" class="btn btn-info">Kembali</a>
                                     </div>
                                 </form>
                             </div>

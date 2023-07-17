@@ -8,6 +8,12 @@ class Auth extends BaseController
 {
     public function index()
     {
+        $role = session()->get('role');
+        if($role == "Operator") {
+            return redirect()->to(base_url('/operator/dashboard'));
+        } elseif($role == "Guru") {
+            return redirect()->to(base_url('/home'));
+        }
         $data = [
             'title' => 'Login',
         ];
@@ -42,7 +48,7 @@ class Auth extends BaseController
         $user = $this->KaryawanModel->checkEmailKaryawan($email);
 
         if ($user) {
-            if ($user['is_active'] == "Aktif") {
+            if ($user['is_active'] == 1) {
                 $hashed_password = hash('sha256', $password.$user['salt']);
                 if ($hashed_password === $user['password']) {
                     session()->set([
