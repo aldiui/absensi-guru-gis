@@ -12,6 +12,11 @@
                     <div class="font-weight-bold">Data <?= $title;?> <?=  $jadwal['name'];?></div>
                 </div>
                 <div class="card-body">
+                    <p>
+                        Keterangan : AM berlaku untuk jam 12.00 malam hingga 11.59 siang. dan PM berlaku untuk 12.00
+                        siang
+                        hingga 11.59 malam.
+                    </p>
                     <?php if($create == "Submit"):?>
                     <form action="<?= base_url('operator/jadwal/save');?>" method="POST">
                         <?= csrf_field();?>
