@@ -145,7 +145,17 @@ class KaryawanModel extends Model
             ->get()
             ->getRowArray();
     }
-
+    
+    public function getUserCheck($id)
+    {
+        return $this->select('users.*, unables.*')
+            ->join('unables', 'unable.user_id = users.id')
+            ->where('unables.date', date('Y-m-d'))
+            ->where('users_id', $id)
+            ->where('jadwal.status', 1)
+            ->get()
+            ->getRowArray();
+    }
 
     public function checkEmailKaryawan($email)
     {

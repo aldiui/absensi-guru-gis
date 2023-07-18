@@ -27,9 +27,16 @@
                                     $now = date('H:i:s');
                                     $jam_masuk = strtotime($jadwal['jam_masuk']);
                                     $jam_keluar = strtotime($jadwal['jam_keluar']);
-                                    $time_absen =  date('H:i:s', strtotime('-'.$setting['sebelum_masuk'].'minutes', $jam_masuk));  
-                                    $time_pulang =  date('H:i:s', $jam_keluar);  
-                                ?>
+                                    $time_absen =  date('H:i:s', strtotime('-'.$setting['sebelum_masuk'].'minutes', $jam_masuk));
+                                    $time_pulang =  date('H:i:s', $jam_keluar);
+                                    ?>
+                                <?php if($izin != null) {?>
+                                <div class="text-center">
+                                    <small>Maaf Anda pada hari ini tidak bisa absen karena telah mengajukan
+                                        <?= $izin['status'];?>
+                                    </small>
+                                </div>
+                                <?php } else {?>
                                 <div class="text-center">
                                     <small>Waktu Absensi masuk anda dari jam <?= $time_absen;?> -
                                         <?= $jadwal['jam_masuk'];?>
@@ -43,6 +50,7 @@
                                     <small>Lebih dari waktu yang ditentukan anda terlambat
                                     </small>
                                 </div>
+                                <?php };?>
                                 <?php else:?>
                                 <div>
                                     <small>Maaf pada <?= tanggalIndo(date('Y-m-d'));?> anda tidak ada jadwal

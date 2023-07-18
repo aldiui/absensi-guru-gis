@@ -113,6 +113,7 @@ class Auth extends BaseController
 
         $email = $this->request->getPost('email');
         $user = $this->KaryawanModel->checkEmailKaryawan($email);
+        $userMail = $this->EmailModel->find(1);
         if ($user) {
             $token = base64_encode(random_bytes(16));
             $data_token = [
@@ -121,7 +122,7 @@ class Auth extends BaseController
             ];
             $this->TokenModel->insert($data_token);
             $email_smtp = \Config\Services::email();
-            $email_smtp->setFrom("adminedarul@gmail.com", "Admin E-DARUL");
+            $email_smtp->setFrom($userMail['from_email'], $userMail['from_name']);
             $email_smtp->setTo($email);
             $email_smtp->setSubject("Reset Password");
             $data = [

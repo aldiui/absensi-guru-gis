@@ -52,7 +52,7 @@ class UnableModel extends Model
         return $this->where('MONTH(date)', $bulan)->where('YEAR(date)', $tahun)->where('user_id', session()->get('id'))->orderBy('date', 'ASC')->findAll();
     }
 
-    
+
     public function getUnable($id, $status, $bulan, $tahun)
     {
         return $this->where('user_id', $id)
@@ -61,5 +61,13 @@ class UnableModel extends Model
         ->where('status', $status)
         ->where('persetujuan', 1)
         ->countAllResults();
-    }  
+    }
+
+    public function check($id)
+    {
+        return $this->where('user_id', $id)
+        ->where('date', date('Y-m-d'))
+        ->where('persetujuan', 1)
+        ->first();
+    }
 }

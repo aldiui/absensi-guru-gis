@@ -34,8 +34,8 @@ class Email extends BaseConfig
 
     public function __construct()
     {
-        $emailsModel = new EmailsModel();
-        $email = $emailsModel->find(1);
+        $emailModel = new EmailModel();
+        $email = $emailModel->find(1);
 
         $this->fromEmail = $email['from_email'];
         $this->fromName = $email['from_name'];

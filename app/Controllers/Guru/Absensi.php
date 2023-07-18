@@ -14,6 +14,7 @@ class Absensi extends BaseController
             $data['title'] = 'Absensi Masuk';
             $data['user'] = $this->KaryawanModel->find(session()->get('id'));
             $data['jadwal'] = $this->KaryawanModel->getUserJadwal(session()->get('id'));
+            $data['izin'] = $this->UnableModel->check(session()->get('id'));
             return view('guru/absen/in', $data);
         } else {
             if ($cekAbsensi['image_out'] == null && $cekAbsensi['location_out'] == null) {

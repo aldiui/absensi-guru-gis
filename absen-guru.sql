@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 17, 2023 at 05:55 PM
+-- Generation Time: Jul 18, 2023 at 02:02 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.0.29
 
@@ -62,7 +62,7 @@ CREATE TABLE `email` (
 --
 
 INSERT INTO `email` (`id`, `from_email`, `from_name`, `recipients`, `user_agent`, `protocol`, `mail_path`, `smtp_host`, `smtp_user`, `smtp_pass`, `smtp_port`, `smtp_timeout`, `smtp_keep_alive`, `smtp_crypto`, `word_wrap`, `wrap_chars`, `mail_type`, `charset`, `validate`, `priority`, `crlf`, `newline`, `bcc_batch_mode`, `bcc_batch_size`, `dsn`, `created_at`, `updated_at`) VALUES
-(1, 'admin@digichainlabs.com', 'digichainlabs', '', 'CodeIgniter', 'smtp', '/usr/sbin/sendmail', 'smtp.googlemail.com', 'bismikaaldi@gmail.com', 'ldldnypaaiqwoqiw', 465, 5, 0, 'ssl', 1, 76, 'html', 'UTF-8', 0, 3, '', '', 0, 200, 0, '2023-06-23 23:22:51', '2023-06-23 23:22:51');
+(1, 'admin@digichainlabs.com', 'digichainlabs', '', 'CodeIgniter', 'smtp', '/usr/sbin/sendmail', 'mail.ginnslash.com', '_mainaccount@ginnslash.com', 'km6VbXNeeTwp29', 465, 5, 0, 'ssl', 1, 76, 'html', 'UTF-8', 0, 3, '', '', 0, 200, 0, '2023-06-23 23:22:51', '2023-07-18 08:55:04');
 
 -- --------------------------------------------------------
 
@@ -124,7 +124,14 @@ INSERT INTO `jadwal` (`id`, `user_id`, `hari`, `jam_masuk`, `jam_keluar`, `jam_m
 (35, 3, 'Wed', '00:00:00', '00:00:00', 2, 1, 1, '2023-07-17 22:05:22', '2023-07-17 22:05:40'),
 (36, 3, 'Thu', '00:00:00', '00:00:00', 2, 1, 1, '2023-07-17 22:05:22', '2023-07-17 22:05:40'),
 (37, 3, 'Fri', '00:00:00', '00:00:00', 2, 1, 1, '2023-07-17 22:05:22', '2023-07-17 22:05:40'),
-(38, 3, 'Sat', '00:00:00', '00:00:00', 2, 1, 1, '2023-07-17 22:05:22', '2023-07-17 22:05:40');
+(38, 3, 'Sat', '00:00:00', '00:00:00', 2, 1, 1, '2023-07-17 22:05:22', '2023-07-17 22:05:40'),
+(39, 4, 'Sun', '00:00:00', '00:00:00', 0, 1, 1, '2023-07-18 01:02:53', '2023-07-18 01:02:53'),
+(40, 4, 'Mon', '00:00:00', '00:00:00', 0, 1, 1, '2023-07-18 01:02:53', '2023-07-18 01:02:53'),
+(41, 4, 'Tue', '00:00:00', '00:00:00', 0, 1, 1, '2023-07-18 01:02:53', '2023-07-18 01:02:53'),
+(42, 4, 'Wed', '00:00:00', '00:00:00', 0, 1, 1, '2023-07-18 01:02:53', '2023-07-18 01:02:53'),
+(43, 4, 'Thu', '00:00:00', '00:00:00', 0, 1, 1, '2023-07-18 01:02:53', '2023-07-18 01:02:53'),
+(44, 4, 'Fri', '00:00:00', '00:00:00', 0, 1, 1, '2023-07-18 01:02:53', '2023-07-18 01:02:53'),
+(45, 4, 'Sat', '00:00:00', '00:00:00', 0, 1, 1, '2023-07-18 01:02:53', '2023-07-18 01:02:53');
 
 -- --------------------------------------------------------
 
@@ -187,7 +194,8 @@ CREATE TABLE `penggajian` (
 INSERT INTO `penggajian` (`id`, `user_id`, `bulan`, `tahun`, `total_jam`, `total_absensi`, `gaji`, `gaji_pokok`, `tunjangan`, `lain_lain`, `total`, `admin_id`, `created_at`, `updated_at`) VALUES
 (3, 2, 7, 2023, 0, 0, 15000, 12000, 2000000, 1000, 2013000, 1, '2023-07-17 17:23:45', '2023-07-17 22:15:07'),
 (4, 3, 7, 2023, 0, 0, 15000, 100000, 200000, 100000, 400000, 1, '2023-07-17 22:06:05', '2023-07-17 22:11:02'),
-(5, 2, 4, 2023, 10, 5, 15000, 150000, 2000, 100000, 252000, 1, '2023-07-17 23:56:19', '2023-07-17 23:56:19');
+(5, 2, 4, 2023, 10, 5, 15000, 150000, 2000, 100000, 252000, 1, '2023-07-17 23:56:19', '2023-07-17 23:56:19'),
+(6, 4, 7, 2023, 0, 0, 15000, 0, 100000, 100000, 200000, 1, '2023-07-18 01:03:20', '2023-07-18 01:03:20');
 
 -- --------------------------------------------------------
 
@@ -268,6 +276,17 @@ CREATE TABLE `tokens` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+--
+-- Dumping data for table `tokens`
+--
+
+INSERT INTO `tokens` (`id`, `email`, `token`, `created_at`, `updated_at`) VALUES
+(1, 'aldijaya280902@gmail.com', 'vR4qyy4ejGVF9Q0qROeayQ==', '2023-07-18 08:55:37', '2023-07-18 08:55:37'),
+(2, 'aldijaya280902@gmail.com', 'LFc+yVQulfayaJEjURlNsg==', '2023-07-18 08:56:39', '2023-07-18 08:56:39'),
+(3, 'aldijaya280902@gmail.com', 'By7hwkFZiM3KqGqH7BT4bA==', '2023-07-18 08:57:48', '2023-07-18 08:57:48'),
+(4, 'aldijaya280902@gmail.com', '567R3MrG+PRFNpkQO59PJQ==', '2023-07-18 08:58:41', '2023-07-18 08:58:41'),
+(5, 'aldikakabow28@gmail.com', 'U4JOKQ2skIqHgA/OICcSdg==', '2023-07-18 09:00:34', '2023-07-18 09:00:34');
+
 -- --------------------------------------------------------
 
 --
@@ -324,7 +343,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `alamat`, `jabatan_id`, `role`, `is_active`, `password`, `salt`, `image`, `created_at`, `updated_at`) VALUES
 (1, 'Aldi Jaya Mulyana', 'aldikakabow28@gmail.com', '087826753532', 'Kp Singabarong RT 01 RW 02 Desa Bojonggaok', 3, 'Operator', 1, 'd52234ed5118a1e24e64cf22e6b667951933c5079ebe32ebd2503820e9b90898', 'tM3Z98U0ujFtjjtaR9GP5g==', '1681782832_7fc77fc2df8784f44196.jpg', '2023-04-01 09:15:35', '2023-07-17 23:27:08'),
 (2, 'Aldiui', 'aldijaya280902@gmail.com', '087826753532', 'Kp Singabarong RT 01 RW 02 Desa Bojonggaok Kecamatan Jamanis', 1, 'Guru', 1, '376d929d12dcd75a14d3b5c19dc090bb287299eff61df5d963112e11885a5a9d', 'PhvalNsH6QetcownGsx+IQ==', '1681786176_dc4310e3764ffdb82c4c.jpeg', '2023-04-11 09:51:43', '2023-04-20 21:21:17'),
-(3, 'maman', 'ucup@gmail.com', '087826753532', 'werfwrwr', 1, 'Guru', 1, 'e0dd16c1c131883404ef2ec243de36b55d7ff8d62d91249c04793e3c825c89ac', 'db7QLvh26S/oxNubMAXOug==', 'default.jpg', '2023-07-17 22:04:39', '2023-07-17 22:05:03');
+(3, 'maman', 'ucup@gmail.com', '087826753532', 'werfwrwr', 1, 'Guru', 1, 'e0dd16c1c131883404ef2ec243de36b55d7ff8d62d91249c04793e3c825c89ac', 'db7QLvh26S/oxNubMAXOug==', 'default.jpg', '2023-07-17 22:04:39', '2023-07-17 22:05:03'),
+(4, 'maakmakma', 'ucasfasup@gmail.com', 'a09wer8097r0937', 'sdfddsfds', 1, 'Guru', 1, 'ab56176a6ccaa9a17f67b523fef34df9168fc45e60fe5da87f55c2a3b0b3fd3a', 'Swv/3mOLewoVbU1Ywa0icQ==', 'default.jpg', '2023-07-18 01:02:38', '2023-07-18 01:02:38');
 
 --
 -- Indexes for dumped tables
@@ -410,7 +430,7 @@ ALTER TABLE `jabatan`
 -- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -422,7 +442,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `penggajian`
 --
 ALTER TABLE `penggajian`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `presents`
@@ -440,7 +460,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `unables`
@@ -452,7 +472,7 @@ ALTER TABLE `unables`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
